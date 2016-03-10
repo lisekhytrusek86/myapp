@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Workspace</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+
+
+<div class="container">
+  
+<h3>Game <span class="label label-success">App</span></h3>
+
+<ul class="nav nav-tabs">
+  <li role="presentation" <% if params[:controller] == "home" && params[:action]=="index" %> class="active" <% end %>><%= link_to 'Start', home_index_path %></li>
+  <li role="presentation"<% if params[:controller] == "home" && params[:action]=="rank" %> class="active" <% end %>><%= link_to 'Ranking', home_rank_path %></li>
+  <li role="presentation"<% if params[:controller] == "home" && params[:action]=="contact" %> class="active" <% end %>><%= link_to 'Kontakt', home_contact_path %></li>
+</ul>
+
+
+<ul class="nav nav-pills">
+  <li role="presentation" class="active"><a href="<%= new_user_session_path %>">Log in</a></li>
+  <li role="presentation"><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+  <li role="presentation" class="active"><a href="<%= edit_user_registration_path %>">Profile</a></li>
+  <li role="presentation"><a href="#">Messages</a></li>
+</ul>
+
+
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+<%= yield %>
+
+</div>
+</body>
+</html>
